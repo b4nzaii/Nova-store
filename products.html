@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produkter | Nova-store</title>
     <link rel="stylesheet" href="css/base.css">
+
+    <link rel="stylesheet" href="css/products.css">
     </head>
     <body>
     <a href="#main" class="skip-link">Hoppa till innehållet</a>
@@ -29,6 +31,11 @@
 
     <main id="main">
         <h1>Produkter</h1>
+
+        <p id="status-message" aria-live="polite"></p> //laddar produkter error och WCAG
+        <div id="product-list" class="product-list"></div> // kort för produkter
+
+
     </main>
 
     <footer class="site-footer">
@@ -36,6 +43,9 @@
     </footer>
 
     <script src="js/main.js"></script>
+
+    <script src="js/api.js"></script> // kommer före porduct.js
+    <script src="js/products.js"></script>
     </body>
 </html>
 
