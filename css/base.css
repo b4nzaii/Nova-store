@@ -1,0 +1,138 @@
+
+/* 1. Design rules : everyone can use */
+
+:root {
+  --color-primary: #2f6db5;
+  --color-text: #222222;
+  --color-bg: #ffffff;
+  --color-light: #f2f4f7;
+  --font-main: Arial, Helvetica, sans-serif;
+  --space-s: 8px;
+  --space-m: 16px;
+  --space-l: 32px;
+  --radius: 8px;
+}
+
+/* 2. Basic reset */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* 3. Skip link: hidden until you press Tab */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-link:focus {
+  left: var(--space-m);
+  top: var(--space-m);
+  background: var(--color-bg);
+  padding: var(--space-s);
+}
+
+/* 4. Visible focus ring for keyboard users */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* 5. Header */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-m);
+  background-color: var(--color-light);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* 6. Menu on phone: hidden until it gets the class "open" */
+
+.site-nav {
+  display: none;
+  width: 100%;
+}
+
+.site-nav.open {
+  display: block;
+}
+
+.site-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-nav a {
+  display: block;
+  padding: var(--space-s) 0;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* 7. Buttons */
+
+button {
+  font-family: var(--font-main);
+  padding: var(--space-s) var(--space-m);
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--color-primary);
+  color: white;
+  cursor: pointer;
+}
+
+/* 8. Main and footer */
+
+main {
+  padding: var(--space-m);
+}
+
+.site-footer {
+  padding: var(--space-m);
+  text-align: center;
+  background-color: var(--color-light);
+}
+
+/* 9. Bigger screens: show the menu, hide the button */
+
+@media (min-width: 768px) {
+  .menu-button {
+    display: none;
+  }
+
+  .site-nav {
+    display: block;
+    width: auto;
+  }
+
+  .site-nav ul {
+    display: flex;
+    gap: var(--space-m);
+  }
+}
