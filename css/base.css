@@ -59,8 +59,9 @@ button:focus-visible {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-m);
-  background-color: var(--color-light);
+  padding: 12px 5%;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid #e8edf4;
 }
 
 .logo {
@@ -68,6 +69,12 @@ button:focus-visible {
   font-weight: bold;
   color: var(--color-primary);
   text-decoration: none;
+}
+
+.logo img {
+  display: block;
+  width: 90px;
+  height: auto;
 }
 
 /* 6. Menu on phone: hidden until it gets the class "open" */
