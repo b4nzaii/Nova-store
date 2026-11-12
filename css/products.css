@@ -33,6 +33,67 @@
   color: var(--color-primary);
 }
 
+/* Sökning, filtrering och sortering */
+ 
+.product-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-m);
+  margin-bottom: var(--space-l);
+  padding: var(--space-m);
+  background-color: var(--color-light);
+  border-radius: var(--radius);
+}
+ 
+.product-tool {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+ 
+.product-tool label {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+ 
+.product-tool input,
+.product-tool select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #999999;
+  border-radius: var(--radius);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: white;
+}
+ 
+/* Fokus för tangentbordsanvändare */
+ 
+.product-tool input:focus-visible,
+.product-tool select:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+ 
+/* Antal produkter */
+ 
+#result-count {
+  color: #555555;
+  margin-bottom: var(--space-m);
+}
+ 
+/* När inga produkter hittas */
+ 
+.no-results {
+  grid-column: 1 / -1;
+  padding: var(--space-l);
+  text-align: center;
+  background-color: var(--color-light);
+  border-radius: var(--radius);
+}
+ 
+
 /* Surfplatta: 2 kolumner */
 @media (min-width: 600px) {
   .product-list {
