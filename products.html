@@ -28,16 +28,42 @@
         </ul>
         </nav>
     </header>
-
-    <main id="main">
-        <h1>Produkter</h1>
-
-        <p id="status-message" aria-live="polite"></p> 
-        <div id="product-list" class="product-list"></div>
-
-
-    </main>
-
+<main id="main">
+    <h1>Produkter</h1>
+    <section class="product-tools" aria-label="Sök och filtrera produkter">
+        <div class="product-tool">
+            <label for="product-search">Sök produkt</label>
+            <input
+                type="search"
+                id="product-search"
+                placeholder="Sök efter produktnamn..."
+            >
+        </div>
+        <div class="product-tool">
+            <label for="category-filter">Kategori</label>
+            <select id="category-filter">
+                <option value="all">Alla kategorier</option>
+                <option value="smartphones">Mobiler</option>
+                <option value="laptops">Datorer</option>
+                <option value="tablets">Surfplattor</option>
+                <option value="mobile-accessories">Tillbehör</option>
+            </select>
+        </div>
+        <div class="product-tool">
+            <label for="price-sort">Sortera efter</label>
+            <select id="price-sort">
+                <option value="default">Standardordning</option>
+                <option value="price-low">Lägsta pris först</option>
+                <option value="price-high">Högsta pris först</option>
+            </select>
+        </div>
+    </section>
+    <p id="status-message" aria-live="polite"></p>
+    <p id="result-count" role="status" aria-live="polite"></p>
+   
+    <div id="product-list" class="product-list"></div>
+</main>
+ 
     <footer class="site-footer">
         <p>© 2026 Nova-store</p>
     </footer>
@@ -48,5 +74,4 @@
     <script src="js/products.js"></script>
     </body>
 </html>
-
 
