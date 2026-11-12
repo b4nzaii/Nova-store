@@ -24,6 +24,10 @@ body {
   font-family: var(--font-main);
   color: var(--color-text);
   background-color: var(--color-bg);
+
+  min-height: 100vh;
+  display:flex;
+  flex-direction: column;
 }
 
 /* 3. Skip link: hidden until you press Tab */
@@ -111,6 +115,7 @@ button {
 
 main {
   padding: var(--space-m);
+  flex: 1;
 }
 
 .site-footer {
