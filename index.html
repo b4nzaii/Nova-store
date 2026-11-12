@@ -1,40 +1,118 @@
 <!DOCTYPE html>
 <html lang="sv">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hem | Nova-store</title>
-    <link rel="stylesheet" href="css/base.css">
-    </head>
-    <body>
-    <a href="#main" class="skip-link">Hoppa till innehållet</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hem | Nova-store</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
 
-    <header class="site-header">
-        <a href="index.html" class="logo">Nova-store</a>
+<body>
+  <a href="#main" class="skip-link">Hoppa till innehållet</a>
 
-        <button class="menu-button" aria-expanded="false" aria-controls="site-nav">
-        Meny
-        </button>
+  <header class="site-header">
+    <a href="index.html" class="logo">Nova-store</a>
 
-        <nav id="site-nav" class="site-nav">
-        <ul>
-            <li><a href="index.html" aria-current="page">Hem</a></li>
-            <li><a href="products.html">Produkter</a></li>
-            <li><a href="favorites.html">Favoriter</a></li>
-            <li><a href="cart.html">Varukorg</a></li>
-            <li><a href="admin.html">Admin</a></li>
-        </ul>
-        </nav>
-    </header>
+    <button class="menu-button" aria-expanded="false" aria-controls="site-nav">
+      Meny
+    </button>
 
-    <main id="main">
-        <h1>Hem</h1>
-    </main>
+    <nav id="site-nav" class="site-nav">
+      <ul>
+        <li><a href="index.html" aria-current="page">Hem</a></li>
+        <li><a href="products.html">Produkter</a></li>
+        <li><a href="favorites.html">Favoriter</a></li>
+        <li><a href="cart.html">Varukorg</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <footer class="site-footer">
-        <p>© 2026 Nova-store</p>
-    </footer>
+  <main id="main" class="home-main">
+    <h1 class="sr-only">Välkommen till Nova-store</h1>
 
-    <script src="js/main.js"></script>
-    </body>
+    <section class="hero-slider" aria-label="Utvalda produkter" aria-roledescription="bildspel">
+
+      <div class="slider-top">
+        <span class="slider-eyebrow">
+          NOVA-STORE / UTVALT FÖR DIG
+        </span>
+        <span id="slider-counter" class="slider-counter" aria-hidden="true"></span>
+      </div>
+
+      <p id="featured-status" class="featured-status" role="status" aria-live="polite">
+        Laddar utvalda produkter.
+      </p>
+
+      <div id="slider-content" class="slider-content" hidden>
+
+        <div class="slider-copy">
+          <p id="slide-category" class="slider-category"></p>
+
+          <h2 id="slide-title" class="slider-title"></h2>
+
+          <p id="slide-description" class="slider-description"></p>
+
+          <p class="slider-price">
+            <span class="sr-only">Pris: </span>
+            <span id="slide-price"></span>
+          </p>
+
+          <div class="slider-links">
+            <a id="slide-link" class="slider-primary-link" href="#">
+              Visa produkten <span aria-hidden="true">↗</span>
+            </a>
+
+            <a href="products.html" class="slider-secondary-link">
+              Alla produkter <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="slider-visual">
+          <div class="slider-circle" aria-hidden="true"></div>
+          <img id="slide-image" class="slider-image" src="" alt="">
+        </div>
+      </div>
+
+      <div id="slider-controls" class="slider-controls" hidden>
+        <div id="slider-dots" class="slider-dots" role="group" aria-label="Välj produkt"></div>
+
+        <div class="slider-buttons">
+          <button id="slider-play-pause" class="slider-play-pause" type="button"
+            aria-label="Pausa automatisk bildväxling">
+            Pausa
+          </button>
+          <button id="slider-prev" class="slider-arrow" type="button" aria-label="Föregående produkt">
+            <span aria-hidden="true">←</span>
+          </button>
+
+          <button id="slider-next" class="slider-arrow" type="button" aria-label="Nästa produkt">
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+
+      <p id="slide-announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+    </section>
+
+    <section class="home-intro" aria-label="Om vårt sortiment">
+      <p>Upptäck mobiler, datorer, surfplattor och tillbehör på ett och samma ställe.</p>
+      <a href="products.html">
+        Utforska hela sortimentet
+        <span aria-hidden="true">→</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Nova-store</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/home.js"></script>
+</body>
+
 </html>
