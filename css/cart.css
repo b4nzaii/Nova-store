@@ -1,0 +1,207 @@
+
+/* Varukorg */
+
+.cart-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.cart-breadcrumbs a,
+.continue-shopping,
+.cart-item-title,
+.back-to-products {
+    color: var(--color-primary);
+}
+
+.cart-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.cart-heading h1 {
+    margin: 10px 0;
+}
+
+.cart-heading p,
+.cart-unit-price,
+.checkout-info {
+    color: #666;
+}
+
+.cart-eyebrow {
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Layout */
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.cart-section-header,
+.summary-line,
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Produkter */
+
+.cart-items {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-image {
+    grid-row: span 2;
+}
+
+.cart-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    background: var(--color-light);
+    border-radius: var(--radius);
+}
+
+.cart-item-title {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.cart-remove {
+    padding: 0;
+    background: none;
+    color: #a32b32;
+    text-decoration: underline;
+}
+
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cart-quantity button {
+    background: var(--color-light);
+    color: var(--color-text);
+}
+
+.cart-quantity button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.cart-line-total {
+    font-weight: bold;
+}
+
+/* Ordersammanfattning */
+
+.cart-summary {
+    padding: 25px;
+    background: var(--color-light);
+    border-radius: var(--radius);
+}
+
+.summary-line {
+    margin: 20px 0;
+}
+
+.summary-total {
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    font-size: 1.3rem;
+}
+
+.checkout-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.checkout-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.checkout-info {
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* Meddelanden och tom varukorg */
+
+.cart-message,
+.cart-empty {
+    padding: 20px;
+    margin: 20px 0;
+    background: var(--color-light);
+    border-radius: var(--radius);
+}
+
+.cart-message.is-error {
+    color: #a32b32;
+}
+
+.cart-message:empty,
+.cart-empty[hidden] {
+    display: none;
+}
+
+.cart-empty {
+    text-align: center;
+}
+
+.empty-cart-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--color-primary);
+}
+
+/* Mobil och surfplatta */
+
+@media (max-width: 768px) {
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item {
+        grid-template-columns: 80px 1fr;
+        gap: 12px;
+    }
+
+    .cart-image img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .cart-quantity,
+    .cart-line-total {
+        grid-column: 2;
+    }
+}

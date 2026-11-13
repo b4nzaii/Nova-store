@@ -1,34 +1,99 @@
 <!DOCTYPE html>
 <html lang="sv">
-    <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Varukorg | Nova-store</title>
     <link rel="stylesheet" href="css/base.css">
-    </head>
-    <body>
-    <a href="#main" class="skip-link">Hoppa till innehållet</a>
+    <link rel="stylesheet" href="css/cart.css">
+</head>
 
+<body>
+    <a href="#main" class="skip-link">Hoppa till innehållet</a>
     <header class="site-header">
         <a href="index.html" class="logo"><img src="assets/Nova-store.png" alt="Nova-store"></a>
-
         <button class="menu-button" aria-expanded="false" aria-controls="site-nav">
-        Meny
+            Meny
         </button>
-
         <nav id="site-nav" class="site-nav">
-        <ul>
-            <li><a href="index.html">Hem</a></li>
-            <li><a href="products.html">Produkter</a></li>
-            <li><a href="favorites.html" >Favoriter</a></li>
-            <li><a href="cart.html" aria-current="page">Varukorg</a></li>
-            <li><a href="admin.html">Admin</a></li>
-        </ul>
+            <ul>
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="products.html">Produkter</a></li>
+                <li><a href="favorites.html">Favoriter</a></li>
+                <li><a href="cart.html" aria-current="page">Varukorg</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
         </nav>
     </header>
+    <main id="main" class="cart-page">
 
-    <main id="main">
-        <h1>Varukorg</h1>
+        <nav class="cart-breadcrumbs" aria-label="Brödsmulor">
+            <a href="index.html">Hem</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Varukorg</span>
+        </nav>
+
+        <div class="cart-heading">
+            <div>
+                <p class="cart-eyebrow">NOVA-STORE / CHECKOUT</p>
+                <h1>Din varukorg</h1>
+                <p>Granska dina produkter innan du slutför köpet.</p>
+            </div>
+
+            <a href="products.html" class="continue-shopping">
+                ← Fortsätt handla
+            </a>
+        </div>
+
+        <p id="cart-message" class="cart-message" role="status" aria-live="polite"></p>
+        <div class="cart-layout">
+            <section class="cart-products-section" aria-labelledby="cart-products-heading">
+                <div class="cart-section-header">
+                    <h2 id="cart-products-heading">Produkter</h2>
+                    <span id="cart-count">0 varor</span>
+                </div>
+
+                <ul id="cart-items" class="cart-items"></ul>
+
+                <div id="cart-empty" class="cart-empty" hidden>
+                    <span class="empty-cart-icon" aria-hidden="true">♡</span>
+                    <h3>Din varukorg är tom</h3>
+                    <p>Det ser lite tomt ut här. Upptäck vårt sortiment!</p>
+                    <a href="products.html" class="empty-cart-link">
+                        Utforska produkter
+                    </a>
+                </div>
+            </section>
+            <aside class="cart-summary" aria-labelledby="summary-heading">
+                <h2 id="summary-heading">Ordersammanfattning</h2>
+                <div class="summary-line">
+                    <span>Antal produkter</span>
+                    <span id="summary-count">0 st</span>
+                </div>
+
+                <div class="summary-line">
+                    <span>Delsumma</span>
+                    <span id="cart-subtotal">0,00 $</span>
+                </div>
+
+                <div class="summary-line summary-shipping">
+                    <span>Frakt</span>
+                    <span>Ej tillämpligt i demon</span>
+                </div>
+                <div class="summary-total">
+                    <span>Totalt</span>
+                    <strong id="cart-total">0,00 $</strong>
+                </div>
+                <button id="checkout-button" class="checkout-button" type="button" disabled>
+                    Genomför köp →
+                </button>
+                <p class="checkout-info">
+                    Detta är ett simulerat köp.
+                    Ingen riktig betalning.
+                </p>
+            </aside>
+        </div>
     </main>
 
     <footer class="site-footer">
@@ -36,5 +101,7 @@
     </footer>
 
     <script src="js/main.js"></script>
-    </body>
+    <script src="js/cart.js"></script>
+</body>
+
 </html>

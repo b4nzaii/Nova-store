@@ -116,5 +116,29 @@ async function loadProducts() {
     console.error("Fel vid hämtning av produkter:", error);
   }
 }
- 
 loadProducts();
+
+// Lägg till produkt i varukorgen
+productList.addEventListener("click", (event) => {
+
+    if (event.target.classList.contains("add-to-cart")) {
+
+        const id = Number(event.target.dataset.id);
+
+        // Hitta produkten i produktlistan
+        const product = allProducts.find(item => item.id === id);
+
+        if (!product) return;
+
+        // Hämta varukorgen
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Lägg till produkten
+        cart.push(product);
+
+        // Spara i localStorage
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        alert("Produkten har lagts till i varukorgen!");
+    }
+});
