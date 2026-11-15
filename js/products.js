@@ -139,6 +139,8 @@ productList.addEventListener("click", (event) => {
         // Spara i localStorage
         localStorage.setItem("cart", JSON.stringify(cart));
 
+       updateCartBadge(); // ny siffra på ikonen
+
         alert("Produkten har lagts till i varukorgen!");
     }
 });

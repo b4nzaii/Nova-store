@@ -39,6 +39,7 @@ function formatPrice(price) {
 function saveCart() {
     try {
         localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartBadge(); // + - ta bort och köp ändrar siffranshowCart();
         showCart();
         return true;
     } catch (error) {
