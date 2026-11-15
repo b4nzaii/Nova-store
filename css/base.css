@@ -1,4 +1,3 @@
-
 /* 1. Design rules : everyone can use */
 
 :root {
@@ -26,7 +25,7 @@ body {
   background-color: var(--color-bg);
 
   min-height: 100vh;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -131,9 +130,6 @@ main {
   background-color: var(--color-light);
 }
 
-.header-cart {
-    display: none;
-}
 
 
 
@@ -154,15 +150,86 @@ main {
     gap: var(--space-m);
   }
 }
-@media (max-width: 768px) {
-    .header-cart {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        color: #306fba;
-        margin-left: auto;
-        margin-right: 15px;
-        text-decoration: none;
-    }
+
+/* korgikonen, syns ALLTID */
+.header-cart {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-s);
+  font-size: 24px;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* på cart.html: streck under ikonen */
+.header-cart[aria-current="page"] {
+  border-bottom: 3px solid var(--color-primary);
+}
+
+/* mobil: Meny vänster, logga, korg höger, menyn under */
+.menu-button {
+  order: 1;
+}
+
+.logo {
+  order: 2;
+  margin-left: var(--space-s);
+  margin-right: auto;
+  /* puttar korgen åt höger */
+}
+
+.header-cart {
+  order: 3;
+}
+
+.site-nav {
+  order: 4;
+}
+
+/* dator: logga, länkar, korg längst till höger */
+
+@media (min-width: 768px) {
+  .logo {
+    order: 1;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .site-nav {
+    order: 2;
+    margin-left: auto;
+    /* länkarna till höger */
+  }
+
+  .header-cart {
+    order: 3;
+    margin-left: var(--space-m);
+  }
+}
+
+/* badgen sitter över ikonens hörn */
+.header-cart {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background-color: #b42318;
+  color: white;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* viktigt! annars syns den ändå */
+.cart-badge[hidden] {
+  display: none;
 }
