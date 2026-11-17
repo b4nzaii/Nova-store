@@ -1,0 +1,84 @@
+.admin-form-section {
+  max-width: 600px;
+  padding: var(--space-m);
+  margin-bottom: var(--space-l);
+  background-color: var(--color-light);
+  border-radius: var(--radius);
+}
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+.form-field label {
+  font-weight: bold;
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: var(--space-s);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  border: 1px solid #999999;
+  border-radius: var(--radius);
+}
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.form-buttons {
+  display: flex;
+  gap: var(--space-s);
+}
+.cancel-button {
+  background-color: #666666;
+}
+.admin-message {
+  min-height: 1.5em;
+  font-weight: bold;
+}
+.admin-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.admin-item {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: var(--space-s);
+  align-items: center;
+  padding: var(--space-s) 0;
+  border-bottom: 1px solid #dddddd;
+}
+.admin-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+.admin-info {
+  display: flex;
+  flex-direction: column;
+}
+.admin-buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: var(--space-s);
+}
+.delete-button {
+  background-color: #b42318;
+}
+@media (min-width: 768px) {
+  .admin-item {
+    grid-template-columns: 50px 1fr auto;
+  }
+  .admin-buttons {
+    grid-column: auto;
+  }
+}
