@@ -1,4 +1,3 @@
-
 const productForm = document.querySelector("#product-form");
 const formHeading = document.querySelector("#form-heading");
 const titleInput = document.querySelector("#product-title");
@@ -9,22 +8,12 @@ const cancelButton = document.querySelector("#cancel-button");
 const adminMessage = document.querySelector("#admin-message");
 const adminList = document.querySelector("#admin-list");
 
-// Produkterna som visas på den här sidan
 let adminProducts = [];
-
-//Vilken produkt vi redigerar och null betyder ”vi skapar en ny”
 let editingId = null;
-
-// Våra egna id:n för nya produkter, eftersom DummyJSON alltid ger 195
 let nextNewId = 1000;
-
-// Timern som döljer framgångsmeddelanden
 let messageTimer = null;
 
 
-///////// CRUD create, read, update, delete
-/// read
-// Show a message. A success message disappears after 3 seconds
 function showMessage(text, isSuccess) {
   clearTimeout(messageTimer);
   adminMessage.textContent = text;
@@ -36,7 +25,7 @@ function showMessage(text, isSuccess) {
   }
 }
 
-// Send data to the API with POST, PUT or DELETE
+
 async function sendJSON(url, method, data) {
   const options = {
     method: method,
@@ -56,7 +45,7 @@ async function sendJSON(url, method, data) {
   return await response.json();
 }
 
-// R: Show all products in the list, each with Redigera and Ta bort
+
 function showAdminProducts() {
   if (adminProducts.length === 0) {
     adminList.innerHTML = "<li>Inga produkter.</li>";
@@ -87,7 +76,7 @@ function showAdminProducts() {
 }
 
 
-// Get the products when the page opens
+
 async function loadAdminProducts() {
   showMessage("Laddar produkter...", false);
 
@@ -101,8 +90,6 @@ async function loadAdminProducts() {
 }
 
 
-// Create
-// Read the form fields and make a product object
 function getFormData() {
   return {
     title: titleInput.value.trim(),
@@ -112,25 +99,25 @@ function getFormData() {
   };
 }
 
-// Empty the form and go back to "create" mode
+
 function resetForm() {
   productForm.reset();
   editingId = null;
   formHeading.textContent = "Lägg till produkt";
   cancelButton.hidden = true;
 }
-// Create a new product with POST
+
 async function createProduct(data) {
   showMessage("Sparar produkt...", false);
 
   try {
     const newProduct = await sendJSON(API_URL + "/add", "POST", data);
 
-    // DummyJSON ger alltid id 195, så vi anger ett eget id
+
     newProduct.id = nextNewId;
     nextNewId = nextNewId + 1;
 
-    // Kom ihåg att den här produkten bara finns på den här sidan
+
     newProduct.isNew = true;
     newProduct.thumbnail = "assets/Nova-store.png";
 
@@ -142,7 +129,7 @@ async function createProduct(data) {
     showMessage("Kunde inte spara produkten. Försök igen.", false);
   }
 }
-// When the form is sent: create a new product, or save changes
+
 productForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -155,10 +142,6 @@ productForm.addEventListener("submit", function (event) {
   }
 });
 
-
-
-// Update , PUT
-// Find one product in adminProducts by its id
 function findProduct(id) {
   for (let i = 0; i < adminProducts.length; i++) {
     if (adminProducts[i].id === id) {
@@ -168,7 +151,7 @@ function findProduct(id) {
 
   return null;
 }
-// Put a product in the form so it can be changed
+
 function startEditing(id) {
   const product = findProduct(id);
 
@@ -186,7 +169,7 @@ function startEditing(id) {
   cancelButton.hidden = false;
   titleInput.focus();
 }
-// Save changes with PUT
+
 async function updateProduct(id, data) {
   const product = findProduct(id);
 
@@ -197,10 +180,10 @@ async function updateProduct(id, data) {
   showMessage("Sparar produkt...", false);
 
   try {
-    // Products we created ourselves don't exist on the server
+
     if (product.isNew !== true) {
       await sendJSON(API_URL + "/" + id, "PUT", data);
-      }
+    }
 
     product.title = data.title;
     product.price = data.price;
@@ -215,7 +198,7 @@ async function updateProduct(id, data) {
   }
 }
 
-// Listen for clicks on Redigera and Ta bort in the list
+
 adminList.addEventListener("click", function (event) {
   const id = Number(event.target.dataset.id);
 
@@ -224,24 +207,55 @@ adminList.addEventListener("click", function (event) {
   }
 });
 
-// Avbryt: stop editing and empty the form
+
 cancelButton.addEventListener("click", function () {
   resetForm();
 });
 
 
+async function deleteProduct(id) {
+  const product = findProduct(id);
+  if (product === null) {
+    return;
+  }
+  const sure = confirm("Är du säker på att du vill ta bort \"" + product.title + "\"?");
+  if (sure === false) {
+    return;
+  }
+  showMessage("Tar bort produkt...", false);
+  try {
+
+    if (product.isNew !== true) {
+      await sendJSON(API_URL + "/" + id, "DELETE");
+    }
+
+    const newList = [];
+    for (let i = 0; i < adminProducts.length; i++) {
+      if (adminProducts[i].id !== id) {
+        newList.push(adminProducts[i]);
+      }
+    }
+    adminProducts = newList;
 
 
+    if (editingId === id) {
+      resetForm();
+    }
+    showAdminProducts();
+    showMessage("Produkten har tagits bort.", true);
+  } catch (error) {
+    showMessage("Kunde inte ta bort produkten. Försök igen.", false);
+  }
+}
 
+adminList.addEventListener("click", function (event) {
+  const id = Number(event.target.dataset.id);
+  if (event.target.classList.contains("edit-button")) {
+    startEditing(id);
+  }
+  if (event.target.classList.contains("delete-button")) {
+    deleteProduct(id);
+  }
+});
 
-
-// Delete
-
-
-
-
-
-
-
-// Start (keep this line at the very bottom of the file)
 loadAdminProducts();
