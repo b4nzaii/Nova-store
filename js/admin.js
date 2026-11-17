@@ -157,7 +157,82 @@ productForm.addEventListener("submit", function (event) {
 
 
 
-// Update
+// Update , PUT
+// Find one product in adminProducts by its id
+function findProduct(id) {
+  for (let i = 0; i < adminProducts.length; i++) {
+    if (adminProducts[i].id === id) {
+      return adminProducts[i];
+    }
+  }
+
+  return null;
+}
+// Put a product in the form so it can be changed
+function startEditing(id) {
+  const product = findProduct(id);
+
+  if (product === null) {
+    return;
+  }
+
+  editingId = id;
+  titleInput.value = product.title;
+  priceInput.value = product.price;
+  categoryInput.value = product.category;
+  descriptionInput.value = product.description;
+
+  formHeading.textContent = "Redigera produkt";
+  cancelButton.hidden = false;
+  titleInput.focus();
+}
+// Save changes with PUT
+async function updateProduct(id, data) {
+  const product = findProduct(id);
+
+  if (product === null) {
+    return;
+  }
+
+  showMessage("Sparar produkt...", false);
+
+  try {
+    // Products we created ourselves don't exist on the server
+    if (product.isNew !== true) {
+      await sendJSON(API_URL + "/" + id, "PUT", data);
+      }
+
+    product.title = data.title;
+    product.price = data.price;
+    product.category = data.category;
+    product.description = data.description;
+
+    showAdminProducts();
+    resetForm();
+    showMessage("Produkten har uppdaterats!", true);
+  } catch (error) {
+    showMessage("Kunde inte uppdatera produkten. Försök igen.", false);
+  }
+}
+
+// Listen for clicks on Redigera and Ta bort in the list
+adminList.addEventListener("click", function (event) {
+  const id = Number(event.target.dataset.id);
+
+  if (event.target.classList.contains("edit-button")) {
+    startEditing(id);
+  }
+});
+
+// Avbryt: stop editing and empty the form
+cancelButton.addEventListener("click", function () {
+  resetForm();
+});
+
+
+
+
+
 
 
 // Delete
