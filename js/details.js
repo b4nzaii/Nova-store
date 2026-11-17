@@ -28,16 +28,19 @@ async function showProduct() {
                 <button class="add-to-cart-button">
                     Lägg till i varukorg
                 </button>
+                <button class="add-to-favorites" data-id="${product.id}" type="button">
+                    Spara som favorit
+                </button>
             </div>
         `;
-
+        updateFavoriteButtons();
         document.querySelector(".add-to-cart-button").addEventListener("click", () => {
             const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
             cart.push(product);
 
             localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartBadge(); // ny siffra på ikonen
+            updateCartBadge();
 
             alert("Produkten har lagts till i varukorgen!");
         });
