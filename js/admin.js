@@ -56,7 +56,7 @@ async function sendJSON(url, method, data) {
   return await response.json();
 }
 
-// Show all products in the list, each with Redigera and Ta bort
+// R: Show all products in the list, each with Redigera and Ta bort
 function showAdminProducts() {
   if (adminProducts.length === 0) {
     adminList.innerHTML = "<li>Inga produkter.</li>";
@@ -99,6 +99,74 @@ async function loadAdminProducts() {
     showMessage("Kunde inte hämta produkterna. Försök igen senare.", false);
   }
 }
+
+
+// Create
+// Read the form fields and make a product object
+function getFormData() {
+  return {
+    title: titleInput.value.trim(),
+    price: Number(priceInput.value),
+    category: categoryInput.value,
+    description: descriptionInput.value.trim()
+  };
+}
+
+// Empty the form and go back to "create" mode
+function resetForm() {
+  productForm.reset();
+  editingId = null;
+  formHeading.textContent = "Lägg till produkt";
+  cancelButton.hidden = true;
+}
+// Create a new product with POST
+async function createProduct(data) {
+  showMessage("Sparar produkt...", false);
+
+  try {
+    const newProduct = await sendJSON(API_URL + "/add", "POST", data);
+
+    // DummyJSON ger alltid id 195, så vi anger ett eget id
+    newProduct.id = nextNewId;
+    nextNewId = nextNewId + 1;
+
+    // Kom ihåg att den här produkten bara finns på den här sidan
+    newProduct.isNew = true;
+    newProduct.thumbnail = "assets/Nova-store.png";
+
+    adminProducts.unshift(newProduct);
+    showAdminProducts();
+    resetForm();
+    showMessage("Produkten \"" + newProduct.title + "\" har lagts till!", true);
+  } catch (error) {
+    showMessage("Kunde inte spara produkten. Försök igen.", false);
+  }
+}
+// When the form is sent: create a new product, or save changes
+productForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const data = getFormData();
+
+  if (editingId === null) {
+    createProduct(data);
+  } else {
+    updateProduct(editingId, data);
+  }
+});
+
+
+
+// Update
+
+
+// Delete
+
+
+
+
+
+
 
 // Start (keep this line at the very bottom of the file)
 loadAdminProducts();
