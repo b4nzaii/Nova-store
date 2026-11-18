@@ -82,3 +82,22 @@
     grid-column: auto;
   }
 }
+
+
+.admin-layout {
+  display: grid;
+  gap: var(--space-l);
+}
+
+@media (min-width: 900px) {
+  .admin-layout {
+    grid-template-columns: 360px 1fr;
+    align-items: start;
+  }
+
+  
+  .admin-form-section {
+    max-width: none;
+    margin-bottom: 0;
+  }
+}
