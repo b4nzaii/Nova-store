@@ -1,108 +1,112 @@
-
 <!DOCTYPE html>
 <html lang="sv">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Nova-store</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="css/admin.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Nova-store</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 
 <body>
-    <a href="#main" class="skip-link">Hoppa till innehållet</a>
+  <a href="#main" class="skip-link">Hoppa till innehållet</a>
 
-    <header class="site-header">
-       
-     <button class="menu-button" aria-expanded="false" aria-controls="site-nav"> Meny </button>
-     <a href="index.html" class="logo"> <img src="assets/Nova-store.png" alt="Nova-store"> </a> 
-     
-     
-      <nav id="site-nav" class="site-nav"> 
-        <ul> 
-          <li><a href="index.html">Hem</a></li>
-          <li><a href="products.html">Produkter</a></li>
-          <li><a href="favorites.html">Favoriter</a></li> 
-          <li><a href="admin.html" aria-current="page">Admin</a></li>
-        </ul> 
-      </nav>
-        
-        <!-- korgen, ska alltid synas --> 
-         <a href="cart.html" class="header-cart" aria-label="Varukorg">
-             <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> 
-             <span id="cart-badge" class="cart-badge" hidden>0</span>
-        </a>
-  
-    </header>
+  <header class="site-header">
 
-    <main id="main">
-        <h1>Admin</h1>
-         <p>Här kan du lägga till, ändra och ta bort produkter.</p>
-          <section class="admin-form-section" aria-labelledby="form-heading">
-    <h2 id="form-heading">Lägg till produkt</h2>
-
-    <form id="product-form" class="product-form">
-      <div class="form-field">
-        <label for="product-title">Titel</label>
-        <input type="text" id="product-title" required>
-      </div>
-
-       <div class="form-field">
-        <label for="product-price">Pris ($)</label>
-        <input type="number" id="product-price" min="0" step="0.01" required>
-      </div>
-
-      <div class="form-field">
-        <label for="product-category">Kategori</label>
-        <select id="product-category">
-          <option value="smartphones">Mobiler</option>
-          <option value="laptops">Datorer</option>
-          <option value="tablets">Surfplattor</option>
-          <option value="mobile-accessories">Tillbehör</option>
-        </select>
-      </div>
-       <div class="form-field">
-        <label for="product-description">Beskrivning</label>
-        <textarea id="product-description" rows="3"></textarea>
-      </div>
-
-      <div class="form-buttons">
-       <button type="submit" id="save-button">Spara</button>
-        <button type="button" id="cancel-button" class="cancel-button" hidden>Avbryt</button> 
-      </div>
-      </form>
-  </section>
-
-   <p id="admin-message" class="admin-message" role="status" aria-live="polite"></p>
-
-    <h2 id="list-heading">Produkter</h2>
-    <ul id="admin-list" class="admin-list"></ul>
-  </section>
-</main>
+    <button class="menu-button" aria-expanded="false" aria-controls="site-nav"> Meny </button>
+    <a href="index.html" class="logo"> <img src="assets/Nova-store.png" alt="Nova-store"> </a>
 
 
+    <nav id="site-nav" class="site-nav">
+      <ul>
+        <li><a href="index.html">Hem</a></li>
+        <li><a href="products.html">Produkter</a></li>
+        <li><a href="favorites.html">Favoriter</a></li>
+        <li><a href="admin.html" aria-current="page">Admin</a></li>
+      </ul>
+    </nav>
+
+    <!-- korgen, ska alltid synas -->
+    <a href="cart.html" class="header-cart" aria-label="Varukorg">
+      <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+      <span id="cart-badge" class="cart-badge" hidden>0</span>
+    </a>
+
+  </header>
+
+  <main id="main">
+    <h1>Admin</h1>
+    <p>Här kan du lägga till, ändra och ta bort produkter.</p>
+
+    <p id="admin-message" class="admin-message" role="status" aria-live="polite"></p>
+    <div class="admin-layout">
+      <section class="admin-form-section" aria-labelledby="form-heading">
+        <h2 id="form-heading">Lägg till produkt</h2>
+
+        <form id="product-form" class="product-form">
+          <div class="form-field">
+            <label for="product-title">Titel</label>
+            <input type="text" id="product-title" required>
+          </div>
+
+          <div class="form-field">
+            <label for="product-price">Pris ($)</label>
+            <input type="number" id="product-price" min="0" step="0.01" required>
+          </div>
+
+          <div class="form-field">
+            <label for="product-category">Kategori</label>
+            <select id="product-category">
+              <option value="smartphones">Mobiler</option>
+              <option value="laptops">Datorer</option>
+              <option value="tablets">Surfplattor</option>
+              <option value="mobile-accessories">Tillbehör</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="product-description">Beskrivning</label>
+            <textarea id="product-description" rows="3"></textarea>
+          </div>
+
+          <div class="form-buttons">
+            <button type="submit" id="save-button">Spara</button>
+            <button type="button" id="cancel-button" class="cancel-button" hidden>Avbryt</button>
+          </div>
+        </form>
+      </section>
 
 
+      <section  class="admin-list-section" aria-labelledby="list-heading">
+        <h2 id="list-heading">Produkter</h2>
+        <ul id="admin-list" class="admin-list"></ul>
+      </section>
 
-
-
+    </div>
+  </main>
 
 
 
 
 
-    </main>
 
-    <footer class="site-footer">
-        <p>© 2026 Nova-store</p>
-    </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/counters.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/admin.js"></script>
+
+
+
+
+
+
+
+  <footer class="site-footer">
+    <p>© 2026 Nova-store</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/counters.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
 
 </body>
 
