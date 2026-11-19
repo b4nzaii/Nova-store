@@ -21,7 +21,7 @@ async function showProduct() {
 
                 <p>Kategori: ${product.category}</p>
 
-                <p>Pris: ${product.price} $</p>
+                <p class="price">${product.price} $</p>
 
                 <p>Betyg: ${product.rating}</p>
 
