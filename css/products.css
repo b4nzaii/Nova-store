@@ -34,7 +34,7 @@
 }
 
 /* Sökning, filtrering och sortering */
- 
+
 .product-tools {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -44,18 +44,18 @@
   background-color: var(--color-light);
   border-radius: var(--radius);
 }
- 
+
 .product-tool {
   display: flex;
   flex-direction: column;
   gap: var(--space-s);
 }
- 
+
 .product-tool label {
   font-weight: bold;
   font-size: 0.9rem;
 }
- 
+
 .product-tool input,
 .product-tool select {
   width: 100%;
@@ -67,24 +67,24 @@
   color: var(--color-text);
   background-color: white;
 }
- 
+
 /* Fokus för tangentbordsanvändare */
- 
+
 .product-tool input:focus-visible,
 .product-tool select:focus-visible {
   outline: 3px solid var(--color-primary);
   outline-offset: 2px;
 }
- 
+
 /* Antal produkter */
- 
+
 #result-count {
   color: #555555;
   margin-bottom: var(--space-m);
 }
- 
+
 /* När inga produkter hittas */
- 
+
 .no-results {
   grid-column: 1 / -1;
   padding: var(--space-l);
@@ -92,7 +92,59 @@
   background-color: var(--color-light);
   border-radius: var(--radius);
 }
- 
+
+
+/* Gemensam design för produktknappar */
+
+.product-list .add-to-cart,
+.product-list .add-to-favorites {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 46px;
+    padding: 12px;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Varukorgsknapp */
+
+.product-list .add-to-cart {
+    background: var(--color-primary);
+    color: white;
+    border: 1px solid var(--color-primary);
+}
+
+.product-list .add-to-cart:hover {
+    background: #20528c;
+}
+
+/* Ikoner */
+
+.product-list .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.product-list .add-to-cart,
+.product-list .add-to-favorites {
+    display: grid;
+    grid-template-columns: 24px 150px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+}
+
+.product-list .material-symbols-outlined {
+    width: 24px;
+    font-size: 20px;
+    text-align: center;
+}
+
 
 /* Surfplatta: 2 kolumner */
 @media (min-width: 600px) {

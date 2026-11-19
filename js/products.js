@@ -35,7 +35,8 @@ function showProducts(products) {
         <a href="details.html?id=${product.id}">Visa mer</a>
 
         <button class="add-to-cart" data-id="${product.id}">
-          Lägg i varukorg
+          <span class="material-symbols-outlined">shopping_cart</span>
+          <span>Lägg i varukorg</span>
         </button>
 
         <button class="add-to-favorites" data-id="${product.id}">
